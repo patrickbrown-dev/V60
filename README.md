@@ -1,2 +1,4 @@
-# reign
-A Rules Engine gem 👑
+# 規則 (Kisoku)
+
+A Rules Engine gem.
+
