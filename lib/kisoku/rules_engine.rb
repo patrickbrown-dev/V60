@@ -1,6 +1,4 @@
 module Kisoku
-  class RulesEngineNoRulesError < StandardError; end
-
   class RulesEngine
     def initialize
       @rules = []
@@ -15,8 +13,6 @@ module Kisoku
     end
 
     def run(initial_value)
-      raise Kisoku::RulesEngineNoRulesError unless @rules.any?
-
       @rules
         .select(&:condition)
         .inject(initial_value) { |acc, rule| rule.action(acc) }

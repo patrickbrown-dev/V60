@@ -14,9 +14,7 @@ class RuleEngineTest < MiniTest::Test
   end
 
   def test_run_with_no_rules
-    assert_raises Kisoku::RulesEngineNoRulesError do
-      @subject.run(nil)
-    end
+    assert_equal :identity, @subject.run(:identity)
   end
 
   def test_run_with_rules
