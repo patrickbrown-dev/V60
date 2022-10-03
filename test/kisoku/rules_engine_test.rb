@@ -18,8 +18,8 @@ class RuleEngineTest < MiniTest::Test
   end
 
   def test_run_with_rules
-    @mock_rule.expect(:condition, true)
-    @mock_rule.expect(:action, nil, [nil])
+    @mock_rule.expect(:condition, true, [{}])
+    @mock_rule.expect(:action, nil, [nil, {}])
     @subject.add_rule(@mock_rule)
 
     @subject.run(nil)
@@ -28,7 +28,7 @@ class RuleEngineTest < MiniTest::Test
   end
 
   def test_rule_should_not_have_action
-    @mock_rule.expect(:condition, false)
+    @mock_rule.expect(:condition, false, [{}])
     @subject.add_rule(@mock_rule)
 
     @subject.run(nil)

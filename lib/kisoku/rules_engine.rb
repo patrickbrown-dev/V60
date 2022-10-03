@@ -12,10 +12,10 @@ module Kisoku
       @rules
     end
 
-    def run(initial_value)
+    def run(initial_value, params={})
       @rules
-        .select(&:condition)
-        .inject(initial_value) { |acc, rule| rule.action(acc) }
+        .select{ |rule| rule.condition(params) }
+        .inject(initial_value) { |acc, rule| rule.action(acc, params) }
     end
   end
 end
