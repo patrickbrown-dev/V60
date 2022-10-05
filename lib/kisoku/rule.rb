@@ -4,11 +4,11 @@ module Kisoku
   class RuleActionNotImplementedError < StandardError; end
 
   class Rule
-    def condition(params={})
+    def condition(params)
       raise RuleConditionNotImplementedError
     end
 
-    def action(acc, params={})
+    def action(acc, params)
       raise RuleActionNotImplementedError
     end
   end

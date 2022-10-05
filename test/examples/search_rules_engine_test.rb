@@ -14,11 +14,11 @@ class SearchRulesEngineTest < MiniTest::Test
         "5" => 3.0
       }
     end
-  
+
     def condition(params)
       params.include?(:rating_greater_than)
     end
-  
+
     def action(acc, params)
       acc.select do |product_id|
         @ratings_service[product_id] > params[:rating_greater_than]
@@ -38,11 +38,11 @@ class SearchRulesEngineTest < MiniTest::Test
         "5" => :mystery
       }
     end
-  
+
     def condition(params)
       params.include?(:genre)
     end
-  
+
     def action(acc, params)
       acc.select do |product_id|
         @ratings_service[product_id] == params[:genre]
@@ -52,9 +52,9 @@ class SearchRulesEngineTest < MiniTest::Test
 
   def setup
     @product_ids = ["0", "1", "2", "3", "4", "5"]
-    @params = { 
+    @params = {
       rating_greater_than: 3.5,
-      genre: :horror,
+      genre: :horror
     }
     @subject = Kisoku::RulesEngine.new
   end
