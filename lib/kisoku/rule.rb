@@ -8,7 +8,7 @@ module Kisoku
       raise RuleConditionNotImplementedError
     end
 
-    def action(acc, params)
+    def action(state, params)
       raise RuleActionNotImplementedError
     end
   end

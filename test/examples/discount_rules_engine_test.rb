@@ -9,7 +9,7 @@ class DiscountRulesEngineTest < MiniTest::Test
     end
 
     def action(acc, params)
-      acc * 0.9
+      0.9
     end
   end
 
@@ -19,13 +19,17 @@ class DiscountRulesEngineTest < MiniTest::Test
     end
 
     def action(acc, params)
-      acc * 0.85
+      0.85
     end
   end
 
   class DiscountRulesEngine < Kisoku::RulesEngine
     def run(params)
-      super(1.0, params)
+      super([], params)
+    end
+
+    def reduce(results)
+      results.inject(1.0) { |acc, result| acc * result }
     end
   end
 

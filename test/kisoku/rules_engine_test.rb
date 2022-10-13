@@ -15,29 +15,29 @@ class RuleEngineTest < MiniTest::Test
   end
 
   def test_run_with_no_rules
-    assert_equal :identity, @subject.run(:identity, @params)
+    assert_equal [:identity], @subject.run(:identity, @params)
   end
 
   def test_run_with_rules
     @mock_rule.expect(:condition, true) { |params| params == @params }
-    @mock_rule.expect(:action, 2) do |initial_value, params|
-      initial_value == 1 && params == @params
+    @mock_rule.expect(:action, 2) do |state, params|
+      state == :foo && params == @params
     end
     @subject.add_rule(@mock_rule)
 
-    result = @subject.run(1, @params)
+    result = @subject.run(:foo, @params)
 
     @mock_rule.verify
-    assert_equal 2, result
+    assert_equal [2], result
   end
 
   def test_rule_should_not_have_action
     @mock_rule.expect(:condition, false) { |params| params == @params }
     @subject.add_rule(@mock_rule)
 
-    result = @subject.run(1, @params)
+    result = @subject.run(nil, @params)
 
     @mock_rule.verify
-    assert_equal 1, result
+    assert_equal [nil], result
   end
 end

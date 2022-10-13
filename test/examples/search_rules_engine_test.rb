@@ -43,10 +43,16 @@ class SearchRulesEngineTest < MiniTest::Test
       params.include?(:genre)
     end
 
-    def action(acc, params)
-      acc.select do |product_id|
+    def action(state, params)
+      state.select do |product_id|
         @ratings_service[product_id] == params[:genre]
       end
+    end
+  end
+
+  class SearchRulesEngine < Kisoku::RulesEngine
+    def reduce(results)
+      results.inject(results[0]) { |acc, result| acc & result }
     end
   end
 
@@ -56,7 +62,7 @@ class SearchRulesEngineTest < MiniTest::Test
       rating_greater_than: 3.5,
       genre: :horror
     }
-    @subject = Kisoku::RulesEngine.new
+    @subject = SearchRulesEngine.new
   end
 
   def test_no_rules_filter_nothing
