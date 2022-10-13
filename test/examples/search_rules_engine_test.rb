@@ -52,7 +52,7 @@ class SearchRulesEngineTest < MiniTest::Test
 
   class SearchRulesEngine < Kisoku::RulesEngine
     def reduce(results)
-      results.inject(results[0]) { |acc, result| acc & result }
+      results.inject(:&)
     end
   end
 

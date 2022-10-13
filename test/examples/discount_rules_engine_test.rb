@@ -29,7 +29,7 @@ class DiscountRulesEngineTest < MiniTest::Test
     end
 
     def reduce(results)
-      results.inject(1.0) { |acc, result| acc * result }
+      results.inject(:*)
     end
   end
 
