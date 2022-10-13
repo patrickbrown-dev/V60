@@ -8,7 +8,7 @@ class RuleTest < MiniTest::Test
 
   def test_condition_raises_exception
     assert_raises Kisoku::RuleConditionNotImplementedError do
-      @subject.condition({})
+      @subject.condition?({})
     end
   end
 

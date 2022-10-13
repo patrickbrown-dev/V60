@@ -21,7 +21,7 @@ class RuleEngineTest < MiniTest::Test
   end
 
   def test_run_with_rules
-    @mock_rule.expect(:condition, true) { |params| params == @params }
+    @mock_rule.expect(:condition?, true) { |params| params == @params }
     @mock_rule.expect(:action, 2) do |state, params|
       state == :foo && params == @params
     end
@@ -34,7 +34,7 @@ class RuleEngineTest < MiniTest::Test
   end
 
   def test_rule_should_not_have_action
-    @mock_rule.expect(:condition, false) { |params| params == @params }
+    @mock_rule.expect(:condition?, false) { |params| params == @params }
     @subject.add_rule(@mock_rule)
 
     result = @subject.run(nil, @params)

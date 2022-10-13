@@ -31,7 +31,7 @@ module Kisoku
       threads = []
       @rules.each do |rule|
         threads << Thread.new(rule, params) do |rule, params|
-          Thread.current[:applicable?] = rule.condition(params)
+          Thread.current[:applicable?] = rule.condition?(params)
           Thread.current[:rule] = rule
         end
       end
