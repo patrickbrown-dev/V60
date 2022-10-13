@@ -1,4 +1,6 @@
 module Kisoku
+  class NoRulesError < StandardError; end
+
   class RulesEngine
     def initialize
       @rules = []
@@ -13,6 +15,7 @@ module Kisoku
     end
 
     def run(state, params)
+      raise NoRulesError if @rules.empty?
       applicable_rules = compute_conditions(params)
       results = compute_actions(state, applicable_rules, params)
       reduce(results)

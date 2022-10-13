@@ -65,8 +65,10 @@ class SearchRulesEngineTest < MiniTest::Test
     @subject = SearchRulesEngine.new
   end
 
-  def test_no_rules_filter_nothing
-    result = @subject.run(@product_ids, @params)
+  def test_all_conditions_evaluate_to_false
+    @subject.add_rule(GenreFilterRule.new)
+
+    result = @subject.run(@product_ids, {})
 
     assert_equal @product_ids, result
   end

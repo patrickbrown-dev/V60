@@ -25,7 +25,7 @@ class DiscountRulesEngineTest < MiniTest::Test
 
   class DiscountRulesEngine < Kisoku::RulesEngine
     def run(params)
-      super([], params)
+      super(1.0, params)
     end
 
     def reduce(results)
