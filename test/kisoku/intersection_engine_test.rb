@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
+require "set"
 require "kisoku"
 
 class IntersectionEngineTest < MiniTest::Test
