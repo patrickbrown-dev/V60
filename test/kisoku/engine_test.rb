@@ -4,8 +4,8 @@ require "minitest/autorun"
 require "set"
 require "kisoku"
 
-class IntersectionEngineTest < MiniTest::Test
-  def test_intersection_engine
+class EngineTest < MiniTest::Test
+  def test_engine
     rules = [
       Kisoku::Filters::EqualTo.new(key: :genre, value: :horror),
       Kisoku::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00)
@@ -29,7 +29,7 @@ class IntersectionEngineTest < MiniTest::Test
         }
       ]
     )
-    engine = Kisoku::IntersectionEngine.new(set, rules)
+    engine = Kisoku::Engine.new(set, rules)
 
     result = engine.run
 

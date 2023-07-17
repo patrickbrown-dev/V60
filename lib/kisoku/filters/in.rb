@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Kisoku::Filters
-  class EqualTo < BaseFilter
+  class In < BaseFilter
     def filter(set)
-      set.select { |obj| obj[@key] == @value }
+      set.select { |obj| @value.any?(obj[@key]) }
     end
   end
 end

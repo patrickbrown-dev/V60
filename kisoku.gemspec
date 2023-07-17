@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/patrickbrown-dev/kisoku"
   s.license = "MIT"
 
+  s.add_runtime_dependency "concurrent-ruby", "~> 1.2.0"
+
   s.add_development_dependency "rake", "~> 13.0.6"
   s.add_development_dependency "minitest", "~> 5.16.3"
   s.add_development_dependency "standard", "~> 1.9.0"
