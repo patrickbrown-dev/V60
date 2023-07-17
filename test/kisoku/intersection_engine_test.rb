@@ -6,10 +6,10 @@ require "kisoku"
 
 class IntersectionEngineTest < MiniTest::Test
   def test_intersection_engine
-    rules = {
-      genre: [:==, :horror],
-      price: [:<=, 10_00]
-    }
+    rules = [
+      Kisoku::Filters::EqualTo.new(key: :genre, value: :horror),
+      Kisoku::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00)
+    ]
     set = Set.new(
       [
         {

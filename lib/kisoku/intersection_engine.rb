@@ -20,11 +20,7 @@ module Kisoku
 
     def compile_rules(rules)
       rules.map do |rule|
-        key = rule[0]
-        operation = rule[1][0]
-        operand = rule[1][1]
-
-        IntersectionRule.new(@initial_set, operation, operand, key)
+        IntersectionRule.new(@initial_set, rule)
       end
     end
   end
