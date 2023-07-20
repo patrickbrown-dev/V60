@@ -1,6 +1,6 @@
 # V60
 
-A Rules Engine gem.
+A Rules Engine gem named after the Hario V60 coffee dripper.
 
 ## A Simple Example
 
