@@ -1,7 +1,7 @@
 require_relative "lib/v60/version"
 
 Gem::Specification.new do |s|
-  s.name = "V60"
+  s.name = "v60"
   s.version = V60::VERSION
   s.summary = "A lightweight Rules Engine"
   s.description = "A gem for implementing the Rules Engine pattern"
