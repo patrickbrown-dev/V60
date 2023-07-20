@@ -2,17 +2,17 @@
 
 require "minitest/autorun"
 require "set"
-require "kisoku"
+require "v60"
 
 class EngineTest < MiniTest::Test
   def test_intersection
-    engine = Kisoku::Engine.new(
+    engine = V60::Engine.new(
       [
-        Kisoku::Filters::EqualTo.new(key: :author, value: "Stephen King"),
-        Kisoku::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
-        Kisoku::Filters::In.new(key: :genre, value: [:horror, :thriller])
+        V60::Filters::EqualTo.new(key: :author, value: "Stephen King"),
+        V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
+        V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      Kisoku::Reducers::Intersection.new
+      V60::Reducers::Intersection.new
     )
     set = Set.new(
       [
@@ -55,13 +55,13 @@ class EngineTest < MiniTest::Test
   end
 
   def test_sum
-    engine = Kisoku::Engine.new(
+    engine = V60::Engine.new(
       [
-        Kisoku::Filters::EqualTo.new(key: :author, value: "Stephen King"),
-        Kisoku::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
-        Kisoku::Filters::In.new(key: :genre, value: [:horror, :thriller])
+        V60::Filters::EqualTo.new(key: :author, value: "Stephen King"),
+        V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
+        V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      Kisoku::Reducers::Sum.new(field: :price)
+      V60::Reducers::Sum.new(field: :price)
     )
     set = Set.new(
       [
@@ -104,13 +104,13 @@ class EngineTest < MiniTest::Test
   end
 
   def test_product
-    engine = Kisoku::Engine.new(
+    engine = V60::Engine.new(
       [
-        Kisoku::Filters::EqualTo.new(key: :author, value: "Stephen King"),
-        Kisoku::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
-        Kisoku::Filters::In.new(key: :genre, value: [:horror, :thriller])
+        V60::Filters::EqualTo.new(key: :author, value: "Stephen King"),
+        V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
+        V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      Kisoku::Reducers::Product.new(field: :price)
+      V60::Reducers::Product.new(field: :price)
     )
     set = Set.new(
       [

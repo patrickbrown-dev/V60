@@ -3,11 +3,11 @@
 require "minitest/spec"
 require "minitest/autorun"
 require "set"
-require "kisoku"
+require "v60"
 
-class GreaterThanOrEqualToTest < MiniTest::Test
-  def test_greater_than_or_equal_to_filter
-    greater_than_or_equal_to_filter = Kisoku::Filters::GreaterThanOrEqualTo.new(key: :price, value: 10_00)
+class LessThanOrEqualToTest < MiniTest::Test
+  def test_lesss_than_or_equal_to_filter
+    lesss_than_or_equal_to_filter = V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00)
     set = Set.new(
       [
         {
@@ -25,8 +25,8 @@ class GreaterThanOrEqualToTest < MiniTest::Test
       ]
     )
 
-    result = greater_than_or_equal_to_filter.filter(set)
+    result = lesss_than_or_equal_to_filter.filter(set)
 
-    assert_equal ["Scary Book", "Sad Book"], result.map { |e| e[:title] }
+    assert_equal ["Scary Book", "Happy Book"], result.map { |e| e[:title] }
   end
 end

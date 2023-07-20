@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Kisoku
+module V60
   class Engine
-    def initialize(rules, reducer)
-      @rules = rules
+    def initialize(filters, reducer)
+      @filters = filters
       @reducer = reducer
     end
 
@@ -16,8 +16,8 @@ module Kisoku
 
     def async_filter(set)
       threads = []
-      @rules.each do |rule|
-        threads << Thread.new { rule.filter(set) }
+      @filters.each do |filter|
+        threads << Thread.new { filter.filter(set) }
       end
       threads.map(&:value)
     end

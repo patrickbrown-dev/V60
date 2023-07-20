@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Kisoku::Filters
+module V60::Filters
   class BaseFilter
     def initialize(key:, value:)
       @key = key
