@@ -3,11 +3,11 @@
 require "minitest/spec"
 require "minitest/autorun"
 require "set"
-require "kisoku"
+require "v60"
 
-class InTest < MiniTest::Test
-  def test_in_filter
-    in_filter = Kisoku::Filters::In.new(key: :genre, value: [:horror, :literary_fiction])
+class EqualToTest < MiniTest::Test
+  def test_equal_to_filter
+    equal_to_filter = V60::Filters::EqualTo.new(key: :genre, value: :horror)
     set = Set.new(
       [
         {
@@ -25,8 +25,8 @@ class InTest < MiniTest::Test
       ]
     )
 
-    result = in_filter.filter(set)
+    result = equal_to_filter.filter(set)
 
-    assert_equal ["Scary Book", "Sad Book"], result.map { |e| e[:title] }
+    assert_equal ["Scary Book"], result.map { |e| e[:title] }
   end
 end

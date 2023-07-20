@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kisoku (0.1.0)
+    v60 (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -46,11 +46,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  kisoku!
   minitest (~> 5.16.3)
   pry (~> 0.13.1)
   rake (~> 13.0.6)
   standard (~> 1.9.0)
+  v60!
 
 BUNDLED WITH
    2.3.12

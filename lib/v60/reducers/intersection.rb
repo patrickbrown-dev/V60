@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Kisoku::Reducers
+module V60::Reducers
   class Intersection
     def reduce(sets)
       while sets.length > 1
