@@ -1,11 +1,25 @@
 # V60
 
-A Rules Engine gem named after the Hario V60 coffee dripper.
+A Rules Engine gem named after the Hario V60 coffee dripper. It's goal is to
+enable developers to efficiently filter large sets of data without creating a
+nest of `if` statements.
+
+⚠️ This gem is still in development and is not ready for production use. ⚠️
+
+## Features
+
+- Gives the developer "building blocks" of filters to be combined in any way.
+- All reducers are associative and commutative, so they are run in parallel.
+- No external dependencies.
+
+## Limitations
+
+- Only supports `Set` as the input data structure.
 
 ## A Simple Example
 
 ```ruby
-require 'v60'
+require "v60"
 
 set = Set.new(
   [
