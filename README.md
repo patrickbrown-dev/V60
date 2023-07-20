@@ -14,7 +14,7 @@ nest of `if` statements.
 
 ## Limitations
 
-- Only supports `Set` as the input data structure.
+- Only supports a Set of Hash maps as the input data structure[^1].
 
 ## A Simple Example
 
@@ -56,3 +56,6 @@ engine = V60::Engine.new(
 
 engine.run(set) # => 16_98
 ```
+
+[^1]: I have plans to open this up to more data structures, but for now Sets of
+Hash maps are the only option.
