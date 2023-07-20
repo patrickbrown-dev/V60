@@ -2,13 +2,14 @@
 
 module Kisoku
   class Engine
-    def initialize(rules)
+    def initialize(rules, reducer)
       @rules = rules
+      @reducer = reducer
     end
 
     def run(set)
       sets = async_filter(set)
-      async_reduce(sets)
+      @reducer.reduce(sets)
     end
 
     private
@@ -19,23 +20,6 @@ module Kisoku
         threads << Thread.new { rule.filter(set) }
       end
       threads.map(&:value)
-    end
-
-    def async_reduce(sets)
-      while sets.length > 1
-        threads = []
-        sets.each_slice(2) do |tuple|
-          threads << if tuple.length == 1
-            Thread.new { tuple[0] }
-          else
-            Thread.new { tuple[0] & tuple[1] }
-          end
-        end
-
-        sets = threads.map(&:value)
-      end
-
-      sets[0]
     end
   end
 end
