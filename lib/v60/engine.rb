@@ -2,7 +2,7 @@
 
 module V60
   class Engine
-    def initialize(filters, reducer)
+    def initialize(filters:, reducer:)
       @filters = filters
       @reducer = reducer
     end

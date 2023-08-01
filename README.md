@@ -26,7 +26,7 @@ set = Set.new(
     {
       title: "Cheap Scary Book",
       genre: :horror,
-      price: 9_99
+      price: 9_00
     },
     {
       title: "Expensive Scary Book",
@@ -41,20 +41,20 @@ set = Set.new(
     {
       title: "Cheap Thrilling Book",
       genre: :thriller,
-      price: 6_99
+      price: 7_00
     }
   ]
 )
 
 engine = V60::Engine.new(
-  [
+  filters: [
     V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
     V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
   ],
-  V60::Reducers::Sum.new(field: :price)
+  reducer: V60::Reducers::Sum.new(field: :price)
 )
 
-engine.run(set) # => 16_98
+engine.run(set) # => 16_00
 ```
 
 [^1]: I have plans to open this up to more data structures, but for now Sets of

@@ -7,12 +7,12 @@ require "v60"
 class EngineTest < MiniTest::Test
   def test_intersection
     engine = V60::Engine.new(
-      [
+      filters: [
         V60::Filters::EqualTo.new(key: :author, value: "Stephen King"),
         V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
         V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      V60::Reducers::Intersection.new
+      reducer: V60::Reducers::Intersection.new
     )
     set = Set.new(
       [
@@ -56,12 +56,12 @@ class EngineTest < MiniTest::Test
 
   def test_sum
     engine = V60::Engine.new(
-      [
+      filters: [
         V60::Filters::EqualTo.new(key: :author, value: "Stephen King"),
         V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
         V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      V60::Reducers::Sum.new(field: :price)
+      reducer: V60::Reducers::Sum.new(field: :price)
     )
     set = Set.new(
       [
@@ -105,12 +105,12 @@ class EngineTest < MiniTest::Test
 
   def test_product
     engine = V60::Engine.new(
-      [
+      filters: [
         V60::Filters::EqualTo.new(key: :author, value: "Stephen King"),
         V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
         V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      V60::Reducers::Product.new(field: :price)
+      reducer: V60::Reducers::Product.new(field: :price)
     )
     set = Set.new(
       [

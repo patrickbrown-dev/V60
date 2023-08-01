@@ -11,7 +11,7 @@ class EngineTest < MiniTest::Test
         {
           title: "Cheap Scary Book",
           genre: :horror,
-          price: 9_99
+          price: 9_00
         },
         {
           title: "Expensive Scary Book",
@@ -26,21 +26,21 @@ class EngineTest < MiniTest::Test
         {
           title: "Cheap Thrilling Book",
           genre: :thriller,
-          price: 6_99
+          price: 7_00
         }
       ]
     )
 
     engine = V60::Engine.new(
-      [
+      filters: [
         V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
         V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      V60::Reducers::Sum.new(field: :price)
+      reducer: V60::Reducers::Sum.new(field: :price)
     )
 
     result = engine.run(set)
 
-    assert_equal 6_99 + 9_99, result
+    assert_equal 9_00 + 7_00, result
   end
 end
