@@ -6,10 +6,12 @@ module V60::Reducers
       while sets.length > 1
         threads = []
         sets.each_slice(2) do |tuple|
-          threads << if tuple.length == 1
-            Thread.new { tuple[0] }
-          else
-            Thread.new { tuple[0] & tuple[1] }
+          threads << Thread.new do
+            if tuple.length == 1
+              tuple[0]
+            else
+              tuple[0] & tuple[1]
+            end
           end
         end
 
