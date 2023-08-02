@@ -8,25 +8,18 @@ require "v60"
 class InTest < MiniTest::Test
   def test_in_filter
     in_filter = V60::Filters::In.new(key: :genre, value: [:horror, :literary_fiction])
-    set = Set.new(
-      [
-        {
-          title: "Scary Book",
-          genre: :horror
-        },
-        {
-          title: "Sad Book",
-          genre: :literary_fiction
-        },
-        {
-          title: "Happy Book",
-          genre: :romance
-        }
-      ]
-    )
+    horror_book = {
+      genre: :horror
+    }
+    literary_fiction_book = {
+      genre: :literary_fiction
+    }
+    romance_book = {
+      genre: :romance
+    }
 
-    result = in_filter.filter(set)
-
-    assert_equal ["Scary Book", "Sad Book"], result.map { |e| e[:title] }
+    assert in_filter.filter(horror_book)
+    assert in_filter.filter(literary_fiction_book)
+    refute in_filter.filter(romance_book)
   end
 end

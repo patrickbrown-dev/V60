@@ -2,14 +2,12 @@
 
 module V60::Reducers
   class Sum
-    def initialize(field:)
-      @field = field
+    def initialize(key:)
+      @key = key
     end
 
     def reduce(sets)
-      V60::Reducers::Intersection.new.reduce(sets).inject(0) do |sum, set|
-        sum + set[@field]
-      end
+      sets.sum { |set| set[@key] }
     end
   end
 end

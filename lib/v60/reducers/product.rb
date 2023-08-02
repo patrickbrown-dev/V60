@@ -2,14 +2,12 @@
 
 module V60::Reducers
   class Product
-    def initialize(field:)
-      @field = field
+    def initialize(key:)
+      @key = key
     end
 
     def reduce(sets)
-      V60::Reducers::Intersection.new.reduce(sets).inject(1) do |product, set|
-        product * set[@field]
-      end
+      sets.inject(1) { |product, set| product * set[@key] }
     end
   end
 end

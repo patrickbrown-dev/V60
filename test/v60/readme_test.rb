@@ -36,7 +36,7 @@ class EngineTest < MiniTest::Test
         V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00),
         V60::Filters::In.new(key: :genre, value: [:horror, :thriller])
       ],
-      reducer: V60::Reducers::Sum.new(field: :price)
+      reducer: V60::Reducers::Sum.new(key: :price)
     )
 
     result = engine.run(set)

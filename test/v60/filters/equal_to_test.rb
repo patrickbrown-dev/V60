@@ -8,25 +8,14 @@ require "v60"
 class EqualToTest < MiniTest::Test
   def test_equal_to_filter
     equal_to_filter = V60::Filters::EqualTo.new(key: :genre, value: :horror)
-    set = Set.new(
-      [
-        {
-          title: "Scary Book",
-          genre: :horror
-        },
-        {
-          title: "Sad Book",
-          genre: :literary_fiction
-        },
-        {
-          title: "Happy Book",
-          genre: :romance
-        }
-      ]
-    )
+    scary_book = {
+      genre: :horror
+    }
+    sad_book = {
+      genre: :literary_fiction
+    }
 
-    result = equal_to_filter.filter(set)
-
-    assert_equal ["Scary Book"], result.map { |e| e[:title] }
+    assert equal_to_filter.filter(scary_book)
+    refute equal_to_filter.filter(sad_book)
   end
 end
