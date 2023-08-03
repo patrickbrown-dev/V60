@@ -8,18 +8,18 @@ module V60
     end
 
     def run(set)
-      sets = async_filter(set)
-      @reducer.reduce(sets)
+      filtered_set = async_filter(set)
+      @reducer.reduce(filtered_set)
     end
 
     private
 
     def async_filter(set)
-      threads = []
-      @filters.each do |filter|
-        threads << Thread.new { filter.filter(set) }
+      set.select do |obj|
+        @filters.all? do |filter|
+          filter.filter(obj)
+        end
       end
-      threads.map(&:value)
     end
   end
 end

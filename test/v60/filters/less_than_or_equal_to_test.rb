@@ -7,26 +7,19 @@ require "v60"
 
 class LessThanOrEqualToTest < MiniTest::Test
   def test_lesss_than_or_equal_to_filter
-    lesss_than_or_equal_to_filter = V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00)
-    set = Set.new(
-      [
-        {
-          title: "Scary Book",
-          price: 10_00
-        },
-        {
-          title: "Sad Book",
-          price: 10_01
-        },
-        {
-          title: "Happy Book",
-          price: 9_99
-        }
-      ]
-    )
+    less_than_or_equal_to_filter = V60::Filters::LessThanOrEqualTo.new(key: :price, value: 10_00)
+    ten_dollar_book = {
+      price: 10_00
+    }
+    expensive_book = {
+      price: 10_01
+    }
+    cheap_book = {
+      price: 9_99
+    }
 
-    result = lesss_than_or_equal_to_filter.filter(set)
-
-    assert_equal ["Scary Book", "Happy Book"], result.map { |e| e[:title] }
+    assert less_than_or_equal_to_filter.filter(ten_dollar_book)
+    assert less_than_or_equal_to_filter.filter(cheap_book)
+    refute less_than_or_equal_to_filter.filter(expensive_book)
   end
 end

@@ -9,7 +9,6 @@ nest of `if` statements.
 ## Features
 
 - Gives the developer "building blocks" of filters to be combined in any way.
-- All reducers are associative and commutative, so they are run in parallel.
 - No external dependencies.
 
 ## Limitations
