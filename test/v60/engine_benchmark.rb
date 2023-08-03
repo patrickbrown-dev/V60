@@ -6,10 +6,6 @@ require "set"
 require "v60"
 
 class EngineBenchmark < MiniTest::Benchmark
-  def self.bench_range
-    bench_exp 1, 100_000
-  end
-
   def bench_engine
     set = Set.new
 
