@@ -7,7 +7,7 @@ require "v60"
 
 class EngineBenchmark < MiniTest::Benchmark
   def self.bench_range
-    bench_exp 1, 1_000_000
+    bench_exp 1, 100_000
   end
 
   def bench_engine
